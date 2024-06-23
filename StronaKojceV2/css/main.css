@@ -1,0 +1,554 @@
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.btn-special-animation {
+  position: relative;
+  transition: background-color 0.3s;
+  overflow: hidden;
+  z-index: 0;
+}
+.btn-special-animation::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s;
+  z-index: -1;
+}
+.btn-special-animation:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.section-heading {
+  position: relative;
+  margin-bottom: 1em;
+  font-size: 3rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.section-padding {
+  padding: 5em 2em;
+}
+
+@media (min-width: 768px) {
+  .section-heading {
+    font-size: 3.6rem;
+  }
+  .section-padding {
+    padding: 6em 2em;
+  }
+}
+@media (min-width: 992px) {
+  .section-heading {
+    font-size: 4.8rem;
+  }
+  .section-padding {
+    padding: 8em 2em;
+  }
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
+}
+
+.burger-btn {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  padding: 1em;
+  background: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  z-index: 1000000;
+}
+.burger-btn:focus {
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+}
+.burger-btn:hover .burger-btn__bars::after,
+.burger-btn:hover .burger-btn__bars::before {
+  width: 100%;
+}
+.burger-btn__box {
+  position: relative;
+  width: 40px;
+  height: 30px;
+}
+.burger-btn__bars, .burger-btn__bars::after, .burger-btn__bars::before {
+  position: absolute;
+  right: 0;
+  height: 3px;
+  content: "";
+  background-color: #fff;
+  transition: width 0.3s;
+}
+.burger-btn__bars {
+  width: 100%;
+}
+.burger-btn__bars::after {
+  top: 13px;
+  width: 60%;
+}
+.burger-btn__bars::before {
+  top: 27px;
+  width: 30%;
+  transition-delay: 0.1s;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(45deg, rgb(25, 17, 10), rgb(61, 43, 33));
+  z-index: 100;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+.nav--active {
+  transform: translateX(0);
+}
+.nav__item {
+  position: relative;
+  display: block;
+  color: #fff;
+  margin: 0.5em 0;
+  padding: 0.5em 2em;
+  font-size: 2.8rem;
+  text-decoration: none;
+}
+.nav__logo {
+  display: none;
+}
+
+@keyframes navItemsAnimation {
+  from {
+    transform: translateX(200%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.nav-items-animation {
+  animation: navItemsAnimation 1s both;
+}
+
+.header {
+  position: relative;
+  height: 100vh;
+  text-align: center;
+  color: #fff;
+  background-image: url("../img/small-devices/hero-img.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-attachment: scroll;
+}
+.header__shadow {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.header__heading {
+  font-size: 2.8rem;
+  padding-top: 5px;
+  font-family: "Holtwood One SC", cursive;
+  font-weight: 300;
+}
+.header__text {
+  font-size: 1.2rem;
+}
+.header__btn {
+  margin-top: 2em;
+  padding: 0.6em 1.2em;
+  font-size: 1.4rem;
+  background: #fff;
+  border: none;
+  border-radius: 8px;
+  color: #2e2e2e;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.header__btn::before {
+  background-color: #eee;
+}
+
+.main .aboutme {
+  background-image: url("../svg/blob-haikei.svg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  background-attachment: scroll;
+}
+.main .aboutme__text {
+  text-align: center;
+  color: #eee;
+  font-size: 1.4rem;
+}
+.main .aboutme__text span {
+  font-weight: bold;
+}
+.main .aboutme__box {
+  display: flex;
+  flex-direction: column;
+  margin: 2em 0;
+}
+.main .aboutme__img {
+  width: 100%;
+  margin-bottom: 1em;
+  transition: transform 0.4s;
+}
+.main .aboutme__img:hover {
+  transform: scale(1.1);
+}
+.main .aboutme__title {
+  margin-bottom: 0.5em;
+  text-align: center;
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: bold;
+}
+.main .gallery {
+  position: relative;
+  width: 100%;
+  background-image: url("../svg/blob-haikei-circles.svg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  text-align: center;
+  background-attachment: scroll;
+}
+.main .gallery .carousel-item {
+  height: 700px;
+}
+.main .gallery .carousel-caption {
+  right: 0;
+  left: 0;
+  padding: 2em 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.main .gallery .carousel-caption h5 {
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+.main .gallery .carousel-caption p {
+  font-size: 1.8rem;
+}
+.main .gallery .carousel-indicators {
+  padding-bottom: 1em;
+}
+.main .gallery .underText {
+  padding-top: 2em;
+  font-size: 1.8rem;
+  color: #fff;
+  text-align: center;
+}
+.main .gallery .underText a {
+  color: blue;
+}
+.main .offers {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../img/small-devices/hero-img2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.main .offers__img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.main .faq {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../img/small-devices/faq.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main .faq .accordion {
+  padding-top: 5em;
+  padding-bottom: 5em;
+  background: transparent;
+}
+.main .faq .accordion .accordion-item {
+  background-color: #3c2a21;
+  border: none;
+}
+.main .faq .accordion .accordion-item .accordion-body {
+  background-color: #3c2a21;
+  font-size: 1.7rem;
+  color: #eee;
+}
+.main .faq .accordion .accordion-item .accordion-button {
+  font-size: 1.8rem;
+  background: #33241c;
+  color: #fff;
+  outline: none;
+  border: 1px solid #1a120b;
+  font-weight: 500;
+}
+.main .faq .accordion .accordion-item .accordion-button:focus {
+  box-shadow: none;
+  border: 1px solid #20160e;
+}
+.main .faq .accordion .accordion-item .accordion-button:not(.collapsed) {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #eee;
+  box-shadow: none;
+}
+.main .faq .accordion .accordion-item .accordion-button::after {
+  background-image: none;
+  content: "\f0d7";
+  font-family: fontawesome;
+  width: auto;
+  height: auto;
+}
+.main .faq .accordion .accordion-item .accordion-button:not(.collapsed)::after {
+  background-image: none;
+}
+.main .contact {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../svg/low-poly-grid-haikei.svg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.main .contact .contact-item {
+  color: #fff;
+}
+.main .contact .contact-item h3 {
+  padding-top: 2em;
+  font-weight: bold;
+}
+.main .contact .contact-item a {
+  list-style: none;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.main .contact .contact-item a:hover {
+  color: #cecece;
+}
+.main .contact .contact-item .social-media img {
+  color: #fff;
+  width: 10%;
+}
+.main__bottom-text {
+  padding: 2em;
+  text-align: center;
+}
+
+footer {
+  background-color: #1a120b;
+  color: #fff;
+  border-top: 2px solid #20160e;
+  padding: 1.5em;
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  .main .aboutme__box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .main .aboutme__box-text {
+    width: 55%;
+  }
+  .main .aboutme__box-text--right {
+    text-align: right;
+  }
+  .main .aboutme__box-img {
+    width: 40%;
+  }
+  .main .aboutme__box-img--right {
+    order: 1;
+  }
+  .main .aboutme__img {
+    margin-bottom: 0;
+    max-height: 300px;
+  }
+}
+@media (min-width: 768px) {
+  .header__heading {
+    font-size: 4.6rem;
+  }
+  .header__text {
+    font-size: 1.8rem;
+  }
+  .header__btn {
+    font-size: 1.6rem;
+  }
+  .main .aboutme__text {
+    font-size: 1.8rem;
+  }
+}
+@media (min-width: 992px) {
+  .header {
+    background-image: url(../img/big-devices/hero-img.jpg);
+  }
+  .header__heading {
+    font-size: 5.5rem;
+  }
+  .header__btn {
+    padding: 0.8em 1.6em;
+  }
+  .nav {
+    display: flex;
+    height: auto;
+    background-image: none;
+    transform: translateX(0);
+    transition: none;
+  }
+  .nav__items {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  .nav__logo {
+    display: block;
+    margin-right: auto;
+    padding: 0.4em 0.5em;
+    color: #fff;
+    font-size: 2.4rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+    cursor: pointer;
+  }
+  .nav__logo i {
+    padding: 0 0.2em;
+    color: #00c900;
+  }
+  .nav__logo:hover {
+    color: #cecece;
+  }
+  .nav__item, .nav__item::after, .nav__item::before {
+    transition: 0.3s;
+  }
+  .nav__item {
+    position: relative;
+    margin: 0;
+    padding: 0.4em 0.7em 0.1em;
+    font-size: 2.2rem;
+    border: none;
+    border-bottom: none;
+    text-transform: uppercase;
+    animation: all 0.3s;
+  }
+  .nav__item::before, .nav__item::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    bottom: 0;
+    border-bottom: 2px solid #fff;
+  }
+  .nav__item::before {
+    right: 50%;
+  }
+  .nav__item::after {
+    left: 50%;
+  }
+  .nav__item:hover::before, .nav__item:hover::after {
+    width: 40%;
+  }
+  .nav--active {
+    transform: translateX(0);
+  }
+  .nav.nav-items-animation {
+    animation: none;
+  }
+  .burger-btn {
+    display: none;
+  }
+  .main .aboutme__box {
+    margin: 5em 0;
+  }
+  .main .aboutme__box-text {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.5em;
+  }
+  .main .aboutme__title {
+    font-size: 3.6rem;
+  }
+  .main .aboutme__text {
+    font-size: 2.4rem;
+  }
+  .main .offers {
+    position: relative;
+    width: 100%;
+    background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../img/big-devices/hero-img2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    text-align: center;
+    background-attachment: scroll;
+  }
+  .main .faq {
+    position: relative;
+    width: 100%;
+    background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../img/big-devices/faq.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  .main .faq .accordion .accordion-item .accordion-button {
+    font-size: 2.4rem;
+  }
+  .main .faq .accordion .accordion-item .accordion-body {
+    font-size: 2.2rem;
+  }
+}/*# sourceMappingURL=main.css.map */

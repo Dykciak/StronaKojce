@@ -1,0 +1,529 @@
+@import "_colors";
+@import "_components";
+@import "_mixins";
+// ==================================================================================================='=================================
+// ----------------- *start* -----------------
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.6rem;
+}
+// ====================================================================================================================================
+// ----------------- *burger-btn* ----------------
+.burger-btn {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    padding: 1em;
+    background: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    z-index: 1000000;
+    &:focus {
+        outline: none;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 8px;
+    }
+
+    &:hover {
+        .burger-btn__bars::after,
+        .burger-btn__bars::before {
+            width: 100%;
+        }
+    }
+    &__box {
+        position: relative;
+        width: 40px;
+        height: 30px;
+    }
+    &__bars,
+    &__bars::after,
+    &__bars::before {
+        @include burgerBtn;
+    }
+    &__bars {
+        width: 100%;
+        &::after {
+            top: 13px;
+            width: 60%;
+        }
+        &::before {
+            top: 27px;
+            width: 30%;
+            transition-delay: 0.1s;
+        }
+    }
+}
+// ====================================================================================================================================
+// ---------------- *NAV* -----------------
+.nav {
+    position: fixed;
+    top: 0;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-image: $blue-gradient-solid;
+    z-index: 100;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+    &--active {
+        transform: translateX(0);
+    }
+
+    &__item {
+        position: relative;
+        display: block;
+        color: $pure-white;
+        margin: 0.5em 0;
+        padding: 0.5em 2em;
+        font-size: 2.8rem;
+        text-decoration: none;
+    }
+    &__logo {
+        display: none;
+    }
+}
+
+@keyframes navItemsAnimation {
+    from {
+        transform: translateX(200%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.nav-items-animation {
+    animation: navItemsAnimation 1s both;
+}
+// ====================================================================================================================================
+// ----------------- *header* -----------------
+
+.header {
+    position: relative;
+    height: 100vh;
+    text-align: center;
+    color: $pure-white;
+    @include heroImages("../img/small-devices/hero-img.jpg");
+    background-attachment: scroll;
+    &__shadow {
+        @include shadowHeader;
+    }
+    &__heading {
+        font-size: 2.8rem;
+        padding-top: 5px;
+        font-family: "Holtwood One SC", cursive;
+        font-weight: 300;
+    }
+    &__text {
+        font-size: 1.2rem;
+    }
+    &__btn {
+        margin-top: 2em;
+        padding: 0.6em 1.2em;
+        font-size: 1.4rem;
+        background: $pure-white;
+        border: none;
+        border-radius: 8px;
+        color: $dark;
+        text-decoration: none;
+        text-transform: uppercase;
+        cursor: pointer;
+        &::before {
+            background-color: $light-white;
+        }
+    }
+}
+
+.main {
+    // aboutme
+    .aboutme {
+        @include heroImages("../svg/blob-haikei.svg");
+        width: 100%;
+        height: 100%;
+        background-attachment: scroll; //ZAPYTAC SIE TATY CZY Z TYM CZY BEZ
+        &__text {
+            text-align: center;
+            color: $light-white;
+            font-size: 1.4rem;
+            span {
+                font-weight: bold;
+            }
+        }
+        &__box {
+            display: flex;
+            flex-direction: column;
+            margin: 2em 0;
+        }
+        &__img {
+            width: 100%;
+            margin-bottom: 1em;
+            transition: transform 0.4s;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+        &__title {
+            margin-bottom: 0.5em;
+            text-align: center;
+            font-size: 1.8rem;
+            color: $pure-white;
+            font-weight: bold;
+        }
+    }
+
+    .gallery {
+        position: relative;
+        width: 100%;
+        @include heroImages("../svg/blob-haikei-circles.svg");
+        text-align: center;
+        background-attachment: scroll;
+
+        // bootstrap
+        .carousel-item {
+            height: 700px;
+        }
+        .carousel-caption {
+            right: 0;
+            left: 0;
+            padding: 2em 0;
+            background-color: rgba($color: #000000, $alpha: 0.6);
+            h5 {
+                font-size: 2.2rem;
+                font-weight: bold;
+            }
+            p {
+                font-size: 1.8rem;
+            }
+        }
+        .carousel-indicators {
+            padding-bottom: 1em;
+        }
+        .underText {
+            padding-top: 2em;
+            font-size: 1.8rem;
+            color: $pure-white;
+            text-align: center;
+            a {
+                color: blue;
+            }
+        }
+    }
+
+    .offers {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        @include heroImagesWithShadow("../img/small-devices/hero-img2.jpg");
+        &__img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    }
+
+    .faq {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        @include heroImagesWithShadow("../img/small-devices/faq.jpg");
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .accordion {
+            padding-top: 5em;
+            padding-bottom: 5em;
+            background: transparent;
+            .accordion-item {
+                background-color: $secondary-color;
+                border: none;
+                .accordion-body {
+                    background-color: $secondary-color;
+                    font-size: 1.7rem;
+                    color: $light-white;
+                }
+                .accordion-button {
+                    font-size: 1.8rem;
+                    background: $darker-secondary-color;
+                    color: $pure-white;
+                    outline: none;
+                    border: 1px solid $main-color;
+                    font-weight: 500;
+                }
+                .accordion-button:focus {
+                    box-shadow: none;
+                    border: 1px solid $lighter-main-color;
+                }
+                .accordion-button:not(.collapsed) {
+                    background-color: rgba(0, 0, 0, 0.1);
+                    color: $light-white;
+                    box-shadow: none;
+                }
+                .accordion-button::after {
+                    background-image: none;
+                    content: "\f0d7";
+                    font-family: fontawesome;
+                    width: auto;
+                    height: auto;
+                }
+                .accordion-button:not(.collapsed)::after {
+                    background-image: none;
+                }
+            }
+        }
+    }
+
+    .contact {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        @include heroImagesWithShadow("../svg/low-poly-grid-haikei.svg");
+        .contact-item {
+            color: $pure-white;
+            h3 {
+                padding-top: 2em;
+                font-weight: bold;
+            }
+            a {
+                list-style: none;
+                color: $pure-white;
+                text-decoration: none;
+                transition: color .3s;
+                &:hover {
+                    color: $white-hover;
+                }
+            }
+            .social-media{
+                img{
+                    color: $pure-white;
+                    width: 10%;
+                }
+            }
+        }
+    }
+    &__bottom-text{
+        padding: 2em;
+        text-align: center;
+    }
+}
+
+footer{
+    background-color: $main-color;
+    color: $pure-white;
+    border-top: 2px solid $lighter-main-color;
+    padding: 1.5em;
+    text-align: center;
+}
+
+// ====================================================================================================================================
+// =====================================================
+// =================== MEDIA QUERIES ===================
+// =====================================================
+// ====================================================================================================================================
+@media (min-width: 576px) {
+    .main {
+        .aboutme {
+            &__box {
+                display: flex;
+                flex-direction: row; //czemu sie nie chce zmienic
+                justify-content: space-between;
+            }
+
+            &__box-text {
+                width: 55%;
+
+                &--right {
+                    text-align: right;
+                }
+            }
+
+            &__box-img {
+                width: 40%;
+
+                &--right {
+                    order: 1;
+                }
+            }
+
+            &__img {
+                margin-bottom: 0;
+                max-height: 300px;
+            }
+        }
+    }
+}
+@media (min-width: 768px) {
+    .header {
+        &__heading {
+            font-size: 4.6rem;
+        }
+        &__text {
+            font-size: 1.8rem;
+        }
+        &__btn {
+            font-size: 1.6rem;
+        }
+    }
+    .main {
+        .aboutme {
+            &__text {
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .header {
+        background-image: url(../img/big-devices/hero-img.jpg);
+
+        &__heading {
+            font-size: 5.5rem;
+        }
+        &__btn {
+            padding: 0.8em 1.6em;
+        }
+    }
+
+    .nav {
+        display: flex;
+        height: auto;
+        background-image: none;
+        transform: translateX(0);
+        transition: none;
+
+        &__items {
+            display: flex;
+            justify-content: flex-end; // Zmiana: z prawej strony
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        &__logo {
+            display: block;
+            margin-right: auto;
+            padding: 0.4em 0.5em;
+            color: $pure-white;
+            font-size: 2.4rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            cursor: pointer;
+            i {
+                padding: 0 0.2em;
+                color: $green-color;
+            }
+            &:hover {
+                color: $white-hover;
+            }
+        }
+        &__item,
+        &__item::after,
+        &__item::before {
+            transition: 0.3s;
+        }
+        &__item {
+            position: relative;
+            margin: 0;
+            padding: 0.4em 0.7em 0.1em;
+            font-size: 2.2rem;
+            border: none;
+            border-bottom: none;
+            text-transform: uppercase;
+            animation: all 0.3s;
+            &::before,
+            &::after {
+                position: absolute;
+                content: "";
+                width: 0;
+                bottom: 0;
+                border-bottom: 2px solid $pure-white;
+            }
+            &::before {
+                right: 50%;
+            }
+            &::after {
+                left: 50%;
+            }
+            &:hover::before,
+            &:hover::after {
+                width: 40%;
+            }
+        }
+
+        &--active {
+            transform: translateX(0);
+        }
+
+        &.nav-items-animation {
+            animation: none; // Wyłączenie animacji dla desktopu
+        }
+    }
+
+    .burger-btn {
+        display: none; // Ukrycie przycisku burgera na desktopie
+    }
+
+    // main
+    .main {
+        .aboutme {
+            &__box {
+                margin: 5em 0;
+            }
+            &__box-text {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 2.5em;
+            }
+            &__title {
+                font-size: 3.6rem;
+            }
+            &__text {
+                font-size: 2.4rem;
+            }
+        }
+        .offers {
+            position: relative;
+            width: 100%;
+            @include heroImagesWithShadow("../img/big-devices/hero-img2.jpg");
+            text-align: center;
+            background-attachment: scroll;
+        }
+        .faq {
+            position: relative;
+            width: 100%;
+            @include heroImagesWithShadow("../img/big-devices/faq.jpg");
+            .accordion {
+                .accordion-item {
+                    .accordion-button {
+                        font-size: 2.4rem;
+                    }
+                    .accordion-body {
+                        font-size: 2.2rem;
+                    }
+                }
+            }
+        }
+    }
+}
